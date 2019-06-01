@@ -32,11 +32,30 @@ Configure your Azure deployment credentials on maven <code>settings.xml</code>
     </server> 
 ```
 
+Configure proxy (fi required)
+As you configure your Java project for ApplicationInsights to allow maven download dependencies you can set maven proxies in your settings.xml (e.g. in C:\Users\%myusername%\.m2)
+
+```xml
+  <proxies>
+	 <proxy>
+	  <id>mgsproxy</id>
+	  <active>true</active>
+	  <protocol>http</protocol>
+	  <host>xx.xx.xx.xx</host>
+	  <port>nnnn</port>
+	</proxy>
+  </proxies>
+```
+
+
 Deploy your application and Monitor your log messages and metrics in Azure Application Insights
+
 ![QueryLogs](./src/common/images/QueryLogs.png "QueryLogs")
 
 ![CustomMetricsQuery](./src/common/images/CustomMetricsQuery.png "CustomMetricsQuery")
 
 ![CustomMetricsGraphs](./src/common/images/CustomMetricsGraph.png "CustomMetricsGraph")
+
+
 
 
