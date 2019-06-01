@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ca.ontario.gocloud.springboot</groupId>
+  <artifactId>spring-boot-ai-example</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.5.RELEASE</version>
+  </parent>
+  <repositories>
+     <repository>
+        <id>central</id>
+        <name>Central</name>
+        <url>http://repo1.maven.org/maven2</url>
+     </repository>
+  </repositories>  
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+     <dependency>
+       <groupId>com.microsoft.azure</groupId>
+       <artifactId>applicationinsights-web</artifactId>
+       <!-- or applicationinsights-core for bare API -->
+       <version>2.4.0-BETA</version>
+     </dependency>
+	<dependency>
+		<groupId>com.microsoft.azure</groupId>
+		<artifactId>applicationinsights-logging-logback</artifactId>
+		<version>2.3.1</version>
+	</dependency>
+	<dependency> 
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>azure-spring-boot-metrics-starter</artifactId>
+    <version>2.1.6</version>
+	</dependency>
+	 <dependency>
+	    <groupId>com.microsoft.azure</groupId>
+	    <artifactId>applicationinsights-spring-boot-starter</artifactId>
+	    <version>1.2.0-BETA</version>
+	</dependency>    
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+	<plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>0.1.5</version>
+                <configuration>
+                    <authentication>
+                        <serverId>azure-auth</serverId>
+                    </authentication>
+                    
+                     <resourceGroup>...</resourceGroup>
+                    <appName>...</appName>
+                    <subscriptionId>...</subscriptionId>
+     
+                    <region>Canada East</region>
+                    <javaVersion>1.8</javaVersion>
+                    <deploymentType>ftp</deploymentType>
+                    <stopAppDuringDeployment>true</stopAppDuringDeployment>
+                    <resources>
+                        <resource>
+                            <directory>${project.basedir}/target</directory>
+                         
+                            <targetPath>/</targetPath>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>${project.basedir}</directory>
+                           
+                            <targetPath>/</targetPath>
+                            <includes>
+                                <include>web.config</include>
+                            </includes>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+    </plugins>
+  </build>
+</project>
