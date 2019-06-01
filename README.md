@@ -1,6 +1,13 @@
 # Java Spring Boot Example integrating with Azure Application Insights
 Azure Java Spring boot Example integrating with Application Insights
 
+Additional info is available at
+
+[Azure App Service - logging and monitoring made easy](https://www.cloudmatter.io/home/azure-app-service-log-monitoring-made-easy)
+
+[Azure App Service - monitoring application behavior (and using custom metrics)](https://www.cloudmatter.io/home/azure-app-service-monitoring-application-behavior-and-using-custom-metrics)
+
+
 ## Setup
 Configure your target App Service in <code>pom.xml</code>
 
