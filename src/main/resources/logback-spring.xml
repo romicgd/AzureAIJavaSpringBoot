@@ -10,7 +10,7 @@
         <instrumentationKey>${INSTRUMENTATION_KEY}</instrumentationKey>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="aiAppender" />
         <appender-ref ref="FILE" />
         <appender-ref ref="CONSOLE" />
@@ -18,6 +18,4 @@
 
     <logger name="com.microsoft.applicationinsights" level="INFO"/>
 
-    <logger name="com.microsoft.demoai" level="DEBUG"/>
-    
 </configuration>
