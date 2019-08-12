@@ -39,8 +39,8 @@ Configure your Azure deployment credentials on maven <code>settings.xml</code>
     </server> 
 ```
 
-Configure proxy (fi required)
-As you configure your Java project for ApplicationInsights to allow maven download dependencies you can set maven proxies in your settings.xml (e.g. in C:\Users\%myusername%\.m2)
+Configure proxy (if required)
+As you configure your Java project for ApplicationInsights to allow maven download dependencies you can set maven proxies in your settings.xml (e.g. in %USERPROFILE%/.m2)
 
 ```xml
   <proxies>
