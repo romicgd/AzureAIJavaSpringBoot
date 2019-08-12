@@ -64,5 +64,24 @@ Deploy your application and Monitor your log messages and metrics in Azure Appli
 ![CustomMetricsGraphs](./src/common/images/CustomMetricsGraph.png "CustomMetricsGraph")
 
 
+## Query Examples
+1. Find recent log messages with specific sub-string:
+```
+traces | where timestamp > ago(1h) | where message contains 'build' | sort by timestamp desc
+```
 
+2. Find count of recent request for each error HTTP code:
+```
+requests | where timestamp > ago(1h) | summarize count() by resultCode
+```
 
+3. Find recent http errors:
+```
+requests | where timestamp > ago(1h) | 
+```
+
+4. Find recent exceptions for specific app (can use cloud_RoleName as filter):
+```
+exceptions | where timestamp > ago(1h) | where cloud_RoleName  == 'springapitest0003' 
+| sort by timestamp desc | project problemId
+```
