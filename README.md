@@ -77,11 +77,18 @@ requests | where timestamp > ago(1h) | summarize count() by resultCode
 
 3. Find recent http errors:
 ```
-requests | where timestamp > ago(1h) | 
+requests | where timestamp > ago(1h) | where toint(resultCode) >=400 and toint(resultCode) != 401 | sort by timestamp desc
 ```
 
-4. Find recent exceptions for specific app (can use cloud_RoleName as filter):
+4. Find recent 5xx errors:
+```
+requests | where timestamp > ago(1h) | where toint(resultCode) >=500 | sort by timestamp desc 
+```
+
+5. Find recent exceptions for specific app (can use cloud_RoleName as filter):
 ```
 exceptions | where timestamp > ago(1h) | where cloud_RoleName  == 'springapitest0003' 
-| sort by timestamp desc | project problemId
+| sort by timestamp desc 
 ```
+
+Note: The cloud_roleName is taken from  ```spring.application.name``` in application.properties.
